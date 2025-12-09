@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Posts on ArVento</title>
-    <link>https://lafleur977.github.io/ArVento/posts/</link>
-    <description>Recent content in Posts on ArVento</description>
-    <generator>Hugo -- 0.152.2</generator>
-    <language>it</language>
-    <lastBuildDate></lastBuildDate>
-    <atom:link href="https://lafleur977.github.io/ArVento/posts/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on ArVento</title><link>https://lafleur977.github.io/ArVento/posts/</link><description>Recent content in Posts on ArVento</description><generator>Hugo -- 0.152.2</generator><language>it</language><lastBuildDate/><atom:link href="https://lafleur977.github.io/ArVento/posts/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
