@@ -1,0 +1,62 @@
+baseURL = 'https://lafleur977.github.io/Blog/'
+languageCode = 'it'
+title = 'ArVento'
+theme = "PaperMod"
+
+[pagination]
+pagerSize = 10
+
+# --- PARAMETRI PERSONALIZZATI ---
+[params]
+defaultTheme = "dark"              # Tema scuro di default
+disableThemeToggle = true         # Permette di passare light/dark
+showReadingTime = true             # Mostra il tempo di lettura
+showShareButtons = false           # Disattiva pulsanti social
+showPostNavLinks = true            # Link tra articoli
+showBreadCrumbs = true             # Percorso di navigazione
+showCodeCopyButtons = true         # Pulsante copia codice
+hideSummary = true
+math = true                        # Attiva supporto MathJax
+
+[params.assets]
+favicon = "/favicon.ico"
+#favicon16x16 = "/favicon-16x16.png"
+#favicon32x32 = "/favicon-32x32.png"
+#apple_touch_icon = "/apple-touch-icon.png"
+#safari_pinned_tab = "/safari-pinned-tab.svg"
+
+
+[params.homeInfoParams]
+Title = "Benvenuti"
+# Content = "Dove troverete solo parole al vento"
+
+
+
+# --- MENU (opzionale) ---
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "Posts"
+url = "/posts/"
+weight = 2
+
+[[menu.main]]
+name = "Chi sono"
+url = "/about/"
+weight = 3
+
+# --- OPZIONI AVANZATE ---
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true                # Permette HTML nei post Markdown
+[markup.highlight]
+noClasses = false
+style = "dracula"              # Stile per il codice (personalizzabile)
+lineNos = true                 # Mostra numeri di riga
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]     # Aggiunge feed RSS e JSON per la ricerca o l’indicizzazione
