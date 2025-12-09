@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/Blog/</loc>
+    <loc>https://lafleur977.github.io/ArVento/</loc>
     <lastmod>2007-10-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/Blog/posts/</loc>
+    <loc>https://lafleur977.github.io/ArVento/posts/</loc>
     <lastmod>2007-10-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/Blog/about/</loc>
+    <loc>https://lafleur977.github.io/ArVento/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/Blog/categories/</loc>
+    <loc>https://lafleur977.github.io/ArVento/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/Blog/tags/</loc>
+    <loc>https://lafleur977.github.io/ArVento/tags/</loc>
   </url><url>
-    <loc>http://localhost:1313/Blog/templateobsidianpost/</loc>
+    <loc>https://lafleur977.github.io/ArVento/templateobsidianpost/</loc>
   </url>
 </urlset>
