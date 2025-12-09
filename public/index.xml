@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>ArVento</title>
     <link>https://lafleur977.github.io/ArVento/</link>
     <description>Recent content on ArVento</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.152.2</generator>
     <language>it</language>
     <lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://lafleur977.github.io/ArVento/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,8 @@
       <link>https://lafleur977.github.io/ArVento/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lafleur977.github.io/ArVento/about/</guid>
-      <description>&lt;p&gt;Ciao, sono un giovane romano e questo è &lt;strong&gt;ArVento&lt;/strong&gt;, uno spazio dove posso dire tutto senza catene. Qui le parole sono al vento: possono essere sfoghi del momento, pensieri random, riflessioni ben meditate o semplici osservazioni. L’importante è che siano mie, libere, senza dover rendere conto a nessuno.&lt;/p&gt;&#xA;&lt;p&gt;Non mi interessano certificazioni o titoli. Per parlare basta avere qualcosa di sensato da dire e, quando serve, citarne le fonti. Tutto il resto sono complicazioni inutili. Su &lt;strong&gt;ArVento&lt;/strong&gt; posso scrivere quello che voglio, come voglio, e restare libero dai giudizi, dai linciaggi e dalle regole che appesantiscono la comunicazione.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Ciao, sono un giovane romano e questo è &lt;strong&gt;ArVento&lt;/strong&gt;, uno spazio dove posso dire tutto senza catene. Qui le parole sono al vento: possono essere sfoghi del momento, pensieri random, riflessioni ben meditate o semplici osservazioni. L’importante è che siano mie, libere, senza dover rendere conto a nessuno.&lt;/p&gt;
+&lt;p&gt;Non mi interessano certificazioni o titoli. Per parlare basta avere qualcosa di sensato da dire e, quando serve, citarne le fonti. Tutto il resto sono complicazioni inutili. Su &lt;strong&gt;ArVento&lt;/strong&gt; posso scrivere quello che voglio, come voglio, e restare libero dai giudizi, dai linciaggi e dalle regole che appesantiscono la comunicazione.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
