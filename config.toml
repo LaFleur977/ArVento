@@ -30,6 +30,9 @@ favicon = "/favicon.ico"
 Title = "Benvenuti"
 # Content = "Dove troverete solo parole al vento"
 
+[caches]
+[caches.images]
+dir = ':cacheDir/images'
 
 
 # --- MENU (opzionale) ---
