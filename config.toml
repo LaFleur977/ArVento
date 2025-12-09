@@ -18,6 +18,11 @@ showCodeCopyButtons = true         # Pulsante copia codice
 hideSummary = true
 math = true                        # Attiva supporto MathJax
 
+head_custom = """
+<script data-goatcounter="https://lafleur.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+"""
+
 [params.assets]
 favicon = "favicon.ico"
 #favicon16x16 = "/favicon-16x16.png"
