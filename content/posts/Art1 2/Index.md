@@ -16,9 +16,6 @@ tags:
   - matematicaComputazionale
   - difettiAlgoritmi
 categories: []
-cover:
-  image: copertina.jpg
-  relative: true
 ---
 Negli anni ’60, nei laboratori di calcolo scientifico, un piccolo dettaglio algoritmico avrebbe cambiato il modo in cui gli studiosi guardano ai numeri casuali. Quel dettaglio si chiamava **RANDU**, uno dei generatori di numeri pseudocasuali più diffusi… e più problematici della storia.
 

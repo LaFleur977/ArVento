@@ -14,9 +14,6 @@ tags:
   - combinatoria
   - puzzleMatematica
 categories: []
-cover:
-  image: copertina.jpg
-  relative: true
 ---
 Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.
 
