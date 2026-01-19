@@ -1,7 +1,5 @@
 ---
 title: Il Problema degli esagoni
-description: ""
-slug:
 date: 2026-01-19
 draft: false
 tags:
@@ -13,7 +11,6 @@ tags:
   - matematicaRicreativa
   - combinatoria
   - puzzleMatematica
-categories: []
 ---
 Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.
 

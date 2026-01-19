@@ -1,7 +1,5 @@
 ---
 title: Lo scandalo di RANDU
-description: ""
-slug:
 date: 2026-01-19
 draft: false
 tags:
@@ -15,7 +13,6 @@ tags:
   - storiaCalcoloScientifico
   - matematicaComputazionale
   - difettiAlgoritmi
-categories: []
 ---
 Negli anni ’60, nei laboratori di calcolo scientifico, un piccolo dettaglio algoritmico avrebbe cambiato il modo in cui gli studiosi guardano ai numeri casuali. Quel dettaglio si chiamava **RANDU**, uno dei generatori di numeri pseudocasuali più diffusi… e più problematici della storia.
 
