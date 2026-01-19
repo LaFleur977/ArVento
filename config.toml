@@ -32,8 +32,6 @@ android192 = "/android-chrome-192x192.png"
 android512 = "/android-chrome-512x512.png"
 manifest = "/site.webmanifest"
 
-
-
 [params.homeInfoParams]
 Title = "Benvenuti"
 # Content = "Dove troverete solo parole al vento"

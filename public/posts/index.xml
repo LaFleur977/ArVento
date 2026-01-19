@@ -6,7 +6,30 @@
     <description>Recent content in Posts on ArVento</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>it</language>
-    <lastBuildDate></lastBuildDate>
+    <lastBuildDate>Mon, 19 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://lafleur977.github.io/ArVento/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Il Problema degli esagoni</title>
+      <link>https://lafleur977.github.io/ArVento/posts/art1/</link>
+      <pubDate>Mon, 19 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://lafleur977.github.io/ArVento/posts/art1/</guid>
+      <description>&lt;p&gt;Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.&lt;/p&gt;
+&lt;p&gt;Immaginate un esagono composto da celle esagonali più piccole, il cui lato misura &lt;strong&gt;5 celle&lt;/strong&gt; (come mostrato in figura).&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Immagine Griglia Esagonale non trovata&#34; loading=&#34;lazy&#34; src=&#34;https://lafleur977.github.io/ArVento/posts/art1/posts/Art1/griglia_esagoni.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Tutte le celle inizialmente sono spente e la regola per accenderle è semplice:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Una cella si accende &lt;strong&gt;se e solo se&lt;/strong&gt; è circondata da &lt;strong&gt;3 celle già accese&lt;/strong&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lo scandalo di RANDU</title>
+      <link>https://lafleur977.github.io/ArVento/posts/art1-2/</link>
+      <pubDate>Mon, 19 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://lafleur977.github.io/ArVento/posts/art1-2/</guid>
+      <description>&lt;p&gt;Negli anni ’60, nei laboratori di calcolo scientifico, un piccolo dettaglio algoritmico avrebbe cambiato il modo in cui gli studiosi guardano ai numeri casuali. Quel dettaglio si chiamava &lt;strong&gt;RANDU&lt;/strong&gt;, uno dei generatori di numeri pseudocasuali più diffusi… e più problematici della storia.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;che-cosè-randu&#34;&gt;Che cos’è RANDU?&lt;/h2&gt;
+&lt;p&gt;RANDU è un &lt;a href=&#34;https://it.wikipedia.org/wiki/Generatore_lineare_congruenziale&#34;&gt;generatore lineare congruenziale&lt;/a&gt;, un algoritmo che produce sequenze di numeri apparentemente casuali secondo la formula:&lt;/p&gt;
+&lt;p&gt;$$X_{n+1} = (a \cdot X_{n} + c) \mod m$$&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

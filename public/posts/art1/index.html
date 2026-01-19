@@ -1,24 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="dark">
 
-<head><script src="/ArVento/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=ArVento/livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>bbbbbbomba | ArVento</title>
-<meta name="keywords" content="">
-<meta name="description" content="bbbbbbomba - ArVento">
+<meta name="robots" content="index, follow">
+
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "\\(", right: "\\)", display: false}
+    ],
+    throwOnError: false
+  });
+});
+</script>
+
+<title>Il Problema degli esagoni | ArVento</title>
+<meta name="keywords" content="olimpiadiMatematica, InvariantiMatematiche, algebra, esagonoCelle, automaCellulare, matematicaRicreativa, combinatoria, puzzleMatematica">
+<meta name="description" content="Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.
+Immaginate un esagono composto da celle esagonali più piccole, il cui lato misura 5 celle (come mostrato in figura).
+
+Tutte le celle inizialmente sono spente e la regola per accenderle è semplice:
+
+Una cella si accende se e solo se è circondata da 3 celle già accese.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/ArVento/posts/art1/">
+<link rel="canonical" href="https://lafleur977.github.io/ArVento/posts/art1/">
 <link crossorigin="anonymous" href="/ArVento/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/ArVento/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/ArVento/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/ArVento/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/ArVento/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/ArVento/safari-pinned-tab.svg">
+<link rel="icon" href="https://lafleur977.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lafleur977.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lafleur977.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lafleur977.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lafleur977.github.io/ArVento/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/ArVento/posts/art1/">
+<link rel="alternate" hreflang="en" href="https://lafleur977.github.io/ArVento/posts/art1/">
 <noscript>
     <style>
         #theme-toggle,
@@ -26,29 +51,118 @@
             display: none;
         }
     </style>
-</noscript>
+</noscript><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+<meta name="theme-color" content="#0F2040">
+<meta name="msapplication-TileColor" content="#0F2040">
+
+<script data-goatcounter="https://lafleur.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script><meta property="og:url" content="https://lafleur977.github.io/ArVento/posts/art1/">
+  <meta property="og:site_name" content="ArVento">
+  <meta property="og:title" content="Il Problema degli esagoni">
+  <meta property="og:description" content="Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.
+Immaginate un esagono composto da celle esagonali più piccole, il cui lato misura 5 celle (come mostrato in figura).
+Tutte le celle inizialmente sono spente e la regola per accenderle è semplice:
+Una cella si accende se e solo se è circondata da 3 celle già accese.">
+  <meta property="og:locale" content="it">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-19T00:00:00+00:00">
+    <meta property="article:tag" content="OlimpiadiMatematica">
+    <meta property="article:tag" content="InvariantiMatematiche">
+    <meta property="article:tag" content="Algebra">
+    <meta property="article:tag" content="EsagonoCelle">
+    <meta property="article:tag" content="AutomaCellulare">
+    <meta property="article:tag" content="MatematicaRicreativa">
+    <meta property="og:image" content="https://lafleur977.github.io/ArVento/posts/art1/copertina.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lafleur977.github.io/ArVento/posts/art1/copertina.jpg">
+<meta name="twitter:title" content="Il Problema degli esagoni">
+<meta name="twitter:description" content="Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.
+Immaginate un esagono composto da celle esagonali più piccole, il cui lato misura 5 celle (come mostrato in figura).
+
+Tutte le celle inizialmente sono spente e la regola per accenderle è semplice:
+
+Una cella si accende se e solo se è circondata da 3 celle già accese.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://lafleur977.github.io/ArVento/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Il Problema degli esagoni",
+      "item": "https://lafleur977.github.io/ArVento/posts/art1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Il Problema degli esagoni",
+  "name": "Il Problema degli esagoni",
+  "description": "Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.\nImmaginate un esagono composto da celle esagonali più piccole, il cui lato misura 5 celle (come mostrato in figura).\nTutte le celle inizialmente sono spente e la regola per accenderle è semplice:\nUna cella si accende se e solo se è circondata da 3 celle già accese.\n",
+  "keywords": [
+    "olimpiadiMatematica", "InvariantiMatematiche", "algebra", "esagonoCelle", "automaCellulare", "matematicaRicreativa", "combinatoria", "puzzleMatematica"
+  ],
+  "articleBody": "Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.\nImmaginate un esagono composto da celle esagonali più piccole, il cui lato misura 5 celle (come mostrato in figura).\nTutte le celle inizialmente sono spente e la regola per accenderle è semplice:\nUna cella si accende se e solo se è circondata da 3 celle già accese.\nLa domanda è:\nQual è il numero minimo di celle da accendere inizialmente e dove devono essere posizionate affinché dopo l’n-esima iterazione illumini tutte le celle?\nClicca qui per la soluzione Le soluzioni a questo quesito sono molteplici, e sopra ne ho mostrata una delle possibili.\nCiò che colpisce subito è il fatto che il numero minimo di celle necessario per illuminare l’intero esagono è 9.\nQuesto numero non è casuale: nasce dalla regola delle tre celle accese contigue. Ogni cella può accendersi solo se circondata da tre celle già illuminate, e da questa semplice regola emerge un vincolo geometrico più profondo: l’invariante del perimetro.\nIn altre parole, affinché una configurazione iniziale di celle accese sia realmente in grado di propagare la luce a tutto l’esagono, il perimetro calcolato dalle celle inizialmente accese deve coincidere con il perimetro dell’esagono grande.\nPer l’esagono in questione, il perimetro misura 54 lati. Solo accendendo 9 celle non contigue si riesce a ottenere questa corrispondenza.\nIn altre parole, la condizione necessaria e sufficiente affinché l’intero esagono si illumini è che la disposizione iniziale delle celle accese abbia un perimetro pari a quello dell’esagono grande. Il numero minimo di celle per soddisfare questa condizione è quindi 9, distribuite in modo da non essere contigue.\n",
+  "wordCount" : "278",
+  "inLanguage": "en",
+  "image":"https://lafleur977.github.io/ArVento/posts/art1/copertina.jpg","datePublished": "2026-01-19T00:00:00Z",
+  "dateModified": "2026-01-19T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lafleur977.github.io/ArVento/posts/art1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ArVento",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lafleur977.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/ArVento/" accesskey="h" title="ArVento (Alt + H)">ArVento</a>
+            <a href="https://lafleur977.github.io/ArVento/" accesskey="h" title="ArVento (Alt + H)">ArVento</a>
             <div class="logo-switches">
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/ArVento/" title="Home">
+                <a href="https://lafleur977.github.io/ArVento/" title="Home">
                     <span>Home</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/ArVento/posts/" title="Posts">
+                <a href="https://lafleur977.github.io/ArVento/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/ArVento/about/" title="Chi sono">
+                <a href="https://lafleur977.github.io/ArVento/about/" title="Chi sono">
                     <span>Chi sono</span>
                 </a>
             </li>
@@ -59,35 +173,70 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/ArVento/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/ArVento/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://lafleur977.github.io/ArVento/">Home</a>&nbsp;»&nbsp;<a href="https://lafleur977.github.io/ArVento/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      bbbbbbomba
-      <span class="entry-hint" title="Draft">
-        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-        </svg>
-      </span>
+      Il Problema degli esagoni
     </h1>
-    <div class="post-meta"><span title='2007-10-21 00:00:00 +0000 UTC'>October 21, 2007</span>&nbsp;·&nbsp;<span>0 min</span>
+    <div class="post-meta"><span title='2026-01-19 00:00:00 +0000 UTC'>January 19, 2026</span>&nbsp;·&nbsp;<span>2 min</span>
 
 </div>
   </header> 
 <figure class="entry-cover">
-            <img loading="eager" src="http://localhost:1313/ArVento/posts/art1/posts/Art1/copertina.jpg" alt="">
+        <img loading="eager" src="https://lafleur977.github.io/ArVento/copertina.jpg" alt="">
         
 </figure>
+  <div class="post-content"><p>Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.</p>
+<p>Immaginate un esagono composto da celle esagonali più piccole, il cui lato misura <strong>5 celle</strong> (come mostrato in figura).</p>
+<p><img alt="Immagine Griglia Esagonale non trovata" loading="lazy" src="/ArVento/posts/art1/posts/Art1/griglia_esagoni.png"></p>
+<p>Tutte le celle inizialmente sono spente e la regola per accenderle è semplice:</p>
+<blockquote>
+<p>Una cella si accende <strong>se e solo se</strong> è circondata da <strong>3 celle già accese</strong>.</p>
+</blockquote>
+<p>La domanda è:</p>
+<blockquote>
+<p><strong>Qual è il numero minimo di celle da accendere inizialmente e dove devono essere posizionate affinché dopo l&rsquo;n-esima iterazione illumini tutte le celle?</strong></p>
+</blockquote>
+<details>
+<summary>Clicca qui per la soluzione</summary>
+<p><img alt="Immagine Soluzione" loading="lazy" src="/ArVento/posts/art1/posts/Art1/griglia_esagoni_soluzione.png"></p>
+<p>Le soluzioni a questo quesito sono molteplici, e sopra ne ho mostrata una delle possibili.<br>
+Ciò che colpisce subito è il fatto che il <strong>numero minimo di celle</strong> necessario per illuminare l’intero esagono è <strong>9</strong>.</p>
+<p>Questo numero non è casuale: nasce dalla regola delle <strong>tre celle accese contigue</strong>. Ogni cella può accendersi solo se circondata da tre celle già illuminate, e da questa semplice regola emerge un vincolo geometrico più profondo: <strong>l’invariante del perimetro</strong>.</p>
+<p>In altre parole, affinché una configurazione iniziale di celle accese sia realmente in grado di propagare la luce a tutto l’esagono, il <strong>perimetro calcolato dalle celle inizialmente accese deve coincidere con il perimetro dell’esagono grande</strong>.</p>
+<p>Per l’esagono in questione, il perimetro misura <strong>54 lati</strong>. Solo accendendo <strong>9 celle non contigue</strong> si riesce a ottenere questa corrispondenza.</p>
+<blockquote>
+<p>In altre parole, la <strong>condizione necessaria e sufficiente</strong> affinché l’intero esagono si illumini è che la <strong>disposizione iniziale delle celle accese abbia un perimetro pari a quello dell’esagono grande</strong>. Il <strong>numero minimo di celle</strong> per soddisfare questa condizione è quindi <strong>9</strong>, distribuite in modo da non essere contigue.</p>
+</blockquote>
+</details>
+
+
+  </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
+      <li><a href="https://lafleur977.github.io/ArVento/tags/olimpiadimatematica/">OlimpiadiMatematica</a></li>
+      <li><a href="https://lafleur977.github.io/ArVento/tags/invariantimatematiche/">InvariantiMatematiche</a></li>
+      <li><a href="https://lafleur977.github.io/ArVento/tags/algebra/">Algebra</a></li>
+      <li><a href="https://lafleur977.github.io/ArVento/tags/esagonocelle/">EsagonoCelle</a></li>
+      <li><a href="https://lafleur977.github.io/ArVento/tags/automacellulare/">AutomaCellulare</a></li>
+      <li><a href="https://lafleur977.github.io/ArVento/tags/matematicaricreativa/">MatematicaRicreativa</a></li>
+      <li><a href="https://lafleur977.github.io/ArVento/tags/combinatoria/">Combinatoria</a></li>
+      <li><a href="https://lafleur977.github.io/ArVento/tags/puzzlematematica/">PuzzleMatematica</a></li>
     </ul>
+<nav class="paginav">
+  <a class="next" href="https://lafleur977.github.io/ArVento/posts/art1-2/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Lo scandalo di RANDU</span>
+  </a>
+</nav>
 
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/ArVento/">ArVento</a></span> · 
+        <span>&copy; 2026 <a href="https://lafleur977.github.io/ArVento/">ArVento</a></span> · 
 
     <span>
         Powered by

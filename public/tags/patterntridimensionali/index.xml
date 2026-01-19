@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>PatternTridimensionali on ArVento</title>
+    <link>https://lafleur977.github.io/ArVento/tags/patterntridimensionali/</link>
+    <description>Recent content in PatternTridimensionali on ArVento</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>it</language>
+    <lastBuildDate>Mon, 19 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://lafleur977.github.io/ArVento/tags/patterntridimensionali/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lo scandalo di RANDU</title>
+      <link>https://lafleur977.github.io/ArVento/posts/art1-2/</link>
+      <pubDate>Mon, 19 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://lafleur977.github.io/ArVento/posts/art1-2/</guid>
+      <description>&lt;p&gt;Negli anni ’60, nei laboratori di calcolo scientifico, un piccolo dettaglio algoritmico avrebbe cambiato il modo in cui gli studiosi guardano ai numeri casuali. Quel dettaglio si chiamava &lt;strong&gt;RANDU&lt;/strong&gt;, uno dei generatori di numeri pseudocasuali più diffusi… e più problematici della storia.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;che-cosè-randu&#34;&gt;Che cos’è RANDU?&lt;/h2&gt;
+&lt;p&gt;RANDU è un &lt;a href=&#34;https://it.wikipedia.org/wiki/Generatore_lineare_congruenziale&#34;&gt;generatore lineare congruenziale&lt;/a&gt;, un algoritmo che produce sequenze di numeri apparentemente casuali secondo la formula:&lt;/p&gt;
+&lt;p&gt;$$X_{n+1} = (a \cdot X_{n} + c) \mod m$$&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

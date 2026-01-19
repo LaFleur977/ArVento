@@ -7,12 +7,17 @@
 <meta name="robots" content="noindex, nofollow">
 {{- end }}
 
+{{ partial "math.html" . }}
+
+
 {{- /* Title */}}
 <title>{{ if .IsHome }}{{ else }}{{ if .Title }}{{ .Title }} | {{ end }}{{ end }}{{ site.Title }}</title>
 
 {{- /* Meta */}}
 {{- if .IsHome }}
-{{ with site.Params.keywords -}}<meta name="keywords" content="{{- range $i, $e := . }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}">{{ end }}
+{{ with site.Params.keywords -}}
+<meta name="keywords" content="{{- range $i, $e := . }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}">
+{{ end }}
 {{- else }}
 <meta name="keywords" content="{{ if .Params.keywords -}}
     {{- range $i, $e := .Params.keywords }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} {{- else }}
@@ -43,8 +48,8 @@
 {{- $includes = $includes | append (" " | resources.FromString "assets/css/includes-blank.css")}}
 
 {{- if not (eq site.Params.assets.disableScrollBarStyle true) }}
-    {{- $ScrollStyle := (resources.Get "css/includes/scroll-bar.css") }}
-    {{- $includes = (append $ScrollStyle $includes) }}
+{{- $ScrollStyle := (resources.Get "css/includes/scroll-bar.css") }}
+{{- $includes = (append $ScrollStyle $includes) }}
 {{- end }}
 
 {{- $includes_all := $includes | resources.Concat "assets/css/includes.css" }}
@@ -112,7 +117,6 @@
         .top-link {
             display: none;
         }
-
     </style>
     {{- if (and (ne site.Params.defaultTheme "light") (ne site.Params.defaultTheme "dark")) }}
     <style>
@@ -144,7 +148,6 @@
                 border-color: var(--code-bg);
             }
         }
-
     </style>
     {{- end }}
 </noscript>
@@ -173,7 +176,7 @@
     if (localStorage.getItem("pref-theme") === "dark") {
         document.querySelector("html").dataset.theme = 'dark';
     } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
+        document.querySelector("html").dataset.theme = 'light';
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.querySelector("html").dataset.theme = 'dark';
     } else {
