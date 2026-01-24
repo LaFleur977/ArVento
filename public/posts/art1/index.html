@@ -28,7 +28,9 @@ document.addEventListener("DOMContentLoaded", function() {
 <title>Il Problema degli esagoni | ArVento</title>
 <meta name="keywords" content="olimpiadiMatematica, InvariantiMatematiche, algebra, esagonoCelle, automaCellulare, matematicaRicreativa, combinatoria, puzzleMatematica">
 <meta name="description" content="Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.
+
 Immaginate un esagono composto da celle esagonali più piccole, il cui lato misura 5 celle (come mostrato in figura).
+
 
 Tutte le celle inizialmente sono spente e la regola per accenderle è semplice:
 
@@ -83,7 +85,9 @@ Una cella si accende se e solo se è circondata da 3 celle già accese.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Il Problema degli esagoni">
 <meta name="twitter:description" content="Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.
+
 Immaginate un esagono composto da celle esagonali più piccole, il cui lato misura 5 celle (come mostrato in figura).
+
 
 Tutte le celle inizialmente sono spente e la regola per accenderle è semplice:
 
@@ -120,8 +124,8 @@ Una cella si accende se e solo se è circondata da 3 celle già accese.">
   "keywords": [
     "olimpiadiMatematica", "InvariantiMatematiche", "algebra", "esagonoCelle", "automaCellulare", "matematicaRicreativa", "combinatoria", "puzzleMatematica"
   ],
-  "articleBody": "Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.\nImmaginate un esagono composto da celle esagonali più piccole, il cui lato misura 5 celle (come mostrato in figura).\nTutte le celle inizialmente sono spente e la regola per accenderle è semplice:\nUna cella si accende se e solo se è circondata da 3 celle già accese.\nLa domanda è:\nQual è il numero minimo di celle da accendere inizialmente e dove devono essere posizionate affinché dopo l’n-esima iterazione illumini tutte le celle?\nClicca qui per la soluzione Le soluzioni a questo quesito sono molteplici, e sopra ne ho mostrata una delle possibili.\nCiò che colpisce subito è il fatto che il numero minimo di celle necessario per illuminare l’intero esagono è 9.\nQuesto numero non è casuale: nasce dalla regola delle tre celle accese contigue. Ogni cella può accendersi solo se circondata da tre celle già illuminate, e da questa semplice regola emerge un vincolo geometrico più profondo: l’invariante del perimetro.\nIn altre parole, affinché una configurazione iniziale di celle accese sia realmente in grado di propagare la luce a tutto l’esagono, il perimetro calcolato dalle celle inizialmente accese deve coincidere con il perimetro dell’esagono grande.\nPer l’esagono in questione, il perimetro misura 54 lati. Solo accendendo 9 celle non contigue si riesce a ottenere questa corrispondenza.\nIn altre parole, la condizione necessaria e sufficiente affinché l’intero esagono si illumini è che la disposizione iniziale delle celle accese abbia un perimetro pari a quello dell’esagono grande. Il numero minimo di celle per soddisfare questa condizione è quindi 9, distribuite in modo da non essere contigue.\n",
-  "wordCount" : "278",
+  "articleBody": "Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.\nImmaginate un esagono composto da celle esagonali più piccole, il cui lato misura 5 celle (come mostrato in figura).\nTutte le celle inizialmente sono spente e la regola per accenderle è semplice:\nUna cella si accende se e solo se è circondata da 3 celle già accese.\nLa domanda è:\nQual è il numero minimo di celle da accendere inizialmente e dove devono essere posizionate affinché dopo l’n-esima iterazione illumini tutte le celle?\nClicca qui per la soluzione Le soluzioni a questo quesito sono molteplici, e sopra ne ho mostrata una delle possibili.\nCiò che colpisce subito è il fatto che il numero minimo di celle necessario per illuminare l’intero esagono è 9.\nQuesto numero non è casuale: nasce dalla regola delle tre celle accese contigue. Ogni cella può accendersi solo se circondata da tre celle già illuminate, e da questa semplice regola emerge un vincolo geometrico più profondo: l’invariante del perimetro.\nIn altre parole, affinché una configurazione iniziale di celle accese sia realmente in grado di propagare la luce a tutto l’esagono, il perimetro calcolato dalle celle inizialmente accese deve coincidere con il perimetro dell’esagono grande.\nPer l’esagono in questione, il perimetro misura 54 lati. Solo accendendo 9 celle non contigue si riesce a ottenere questa corrispondenza (poiché ogni esagonino ha 6 lati e $9 \\cdot 6 = 54$).\nIn altre parole, la condizione necessaria e sufficiente affinché l’intero esagono si illumini è che la disposizione iniziale delle celle accese abbia un perimetro pari a quello dell’esagono grande. Il numero minimo di celle per soddisfare questa condizione è quindi 9, distribuite in modo da non essere contigue.\n",
+  "wordCount" : "290",
   "inLanguage": "en",
   "datePublished": "2026-01-19T00:00:00Z",
   "dateModified": "2026-01-19T00:00:00Z",
@@ -180,7 +184,9 @@ Una cella si accende se e solo se è circondata da 3 celle già accese.">
 </div>
   </header> 
   <div class="post-content"><p>Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.</p>
+<blockquote>
 <p>Immaginate un esagono composto da celle esagonali più piccole, il cui lato misura <strong>5 celle</strong> (come mostrato in figura).</p>
+</blockquote>
 <p><img alt="Immagine Griglia Esagonale non trovata" loading="lazy" src="/ArVento/posts/art1/posts/Art1/griglia_esagoni.png"></p>
 <p>Tutte le celle inizialmente sono spente e la regola per accenderle è semplice:</p>
 <blockquote>
@@ -197,7 +203,8 @@ Una cella si accende se e solo se è circondata da 3 celle già accese.">
 Ciò che colpisce subito è il fatto che il <strong>numero minimo di celle</strong> necessario per illuminare l’intero esagono è <strong>9</strong>.</p>
 <p>Questo numero non è casuale: nasce dalla regola delle <strong>tre celle accese contigue</strong>. Ogni cella può accendersi solo se circondata da tre celle già illuminate, e da questa semplice regola emerge un vincolo geometrico più profondo: <strong>l’invariante del perimetro</strong>.</p>
 <p>In altre parole, affinché una configurazione iniziale di celle accese sia realmente in grado di propagare la luce a tutto l’esagono, il <strong>perimetro calcolato dalle celle inizialmente accese deve coincidere con il perimetro dell’esagono grande</strong>.</p>
-<p>Per l’esagono in questione, il perimetro misura <strong>54 lati</strong>. Solo accendendo <strong>9 celle non contigue</strong> si riesce a ottenere questa corrispondenza.</p>
+<p>Per l’esagono in questione, il perimetro misura <strong>54 lati</strong>.
+Solo accendendo <strong>9 celle non contigue</strong> si riesce a ottenere questa corrispondenza (poiché ogni esagonino ha 6 lati e $9 \cdot 6 = 54$).</p>
 <blockquote>
 <p>In altre parole, la <strong>condizione necessaria e sufficiente</strong> affinché l’intero esagono si illumini è che la <strong>disposizione iniziale delle celle accese abbia un perimetro pari a quello dell’esagono grande</strong>. Il <strong>numero minimo di celle</strong> per soddisfare questa condizione è quindi <strong>9</strong>, distribuite in modo da non essere contigue.</p>
 </blockquote>
@@ -218,7 +225,12 @@ Ciò che colpisce subito è il fatto che il <strong>numero minimo di celle</stro
       <li><a href="https://lafleur977.github.io/ArVento/tags/puzzlematematica/">PuzzleMatematica</a></li>
     </ul>
 <nav class="paginav">
-  <a class="next" href="https://lafleur977.github.io/ArVento/posts/art1-2/">
+  <a class="prev" href="https://lafleur977.github.io/ArVento/posts/art3/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Penney&#39;s Game</span>
+  </a>
+  <a class="next" href="https://lafleur977.github.io/ArVento/posts/art2/">
     <span class="title">Next »</span>
     <br>
     <span>Lo scandalo di RANDU</span>

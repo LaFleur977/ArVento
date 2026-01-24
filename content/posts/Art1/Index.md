@@ -14,7 +14,7 @@ tags:
 ---
 Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.
 
-Immaginate un esagono composto da celle esagonali più piccole, il cui lato misura **5 celle** (come mostrato in figura).  
+>Immaginate un esagono composto da celle esagonali più piccole, il cui lato misura **5 celle** (come mostrato in figura).  
 
 ![Immagine Griglia Esagonale non trovata](griglia_esagoni.png)
 
@@ -38,7 +38,8 @@ Questo numero non è casuale: nasce dalla regola delle **tre celle accese contig
 
 In altre parole, affinché una configurazione iniziale di celle accese sia realmente in grado di propagare la luce a tutto l’esagono, il **perimetro calcolato dalle celle inizialmente accese deve coincidere con il perimetro dell’esagono grande**.
 
-Per l’esagono in questione, il perimetro misura **54 lati**. Solo accendendo **9 celle non contigue** si riesce a ottenere questa corrispondenza.
+Per l’esagono in questione, il perimetro misura **54 lati**. 
+Solo accendendo **9 celle non contigue** si riesce a ottenere questa corrispondenza (poiché ogni esagonino ha 6 lati e $9 \cdot 6 = 54$).
 
 >In altre parole, la **condizione necessaria e sufficiente** affinché l’intero esagono si illumini è che la **disposizione iniziale delle celle accese abbia un perimetro pari a quello dell’esagono grande**. Il **numero minimo di celle** per soddisfare questa condizione è quindi **9**, distribuite in modo da non essere contigue.
 

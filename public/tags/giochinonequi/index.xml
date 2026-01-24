@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>GiochiNonEqui on ArVento</title>
+    <link>https://lafleur977.github.io/ArVento/tags/giochinonequi/</link>
+    <description>Recent content in GiochiNonEqui on ArVento</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>it</language>
+    <lastBuildDate>Sat, 24 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://lafleur977.github.io/ArVento/tags/giochinonequi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Penney&#39;s Game</title>
+      <link>https://lafleur977.github.io/ArVento/posts/art3/</link>
+      <pubDate>Sat, 24 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://lafleur977.github.io/ArVento/posts/art3/</guid>
+      <description>&lt;p&gt;Immaginate un gioco per due giocatori basato su un mazzo standard di 52 carte, in cui ci interessa esclusivamente il &lt;strong&gt;colore&lt;/strong&gt; delle carte: rosso (R) o nero (N).&lt;/p&gt;
+&lt;p&gt;All’inizio del gioco, ogni giocatore sceglie una &lt;strong&gt;sequenza di tre colori&lt;/strong&gt; che osserverà per tutto il resto della partita. Ad esempio, il &lt;strong&gt;Giocatore 1&lt;/strong&gt; potrebbe scegliere la sequenza &lt;strong&gt;R-N-N&lt;/strong&gt;, mentre il &lt;strong&gt;Giocatore 2&lt;/strong&gt; potrebbe optare per &lt;strong&gt;R-R-N&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Il gioco procede quindi così: si pescano le carte una alla volta dal mazzo. Ogni volta che compare una sequenza corrispondente a quella di un giocatore, quel giocatore segna un punto e le carte vengono scartate. Si continua fino all’esaurimento del mazzo.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

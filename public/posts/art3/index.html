@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false},
+      {left: "\\[", right: "\\]", display: true},
+      {left: "\\(", right: "\\)", display: false}
+    ],
+    throwOnError: false
+  });
+});
+</script>
+
+<title>Penney&#39;s Game | ArVento</title>
+<meta name="keywords" content="PenneysGame, TeoriaDellaProbabilità, CateneDiMarkov, GiochiNonEqui, SimulazioneMonteCarlo, Python, Divertimento">
+<meta name="description" content="Immaginate un gioco per due giocatori basato su un mazzo standard di 52 carte, in cui ci interessa esclusivamente il colore delle carte: rosso (R) o nero (N).
+All’inizio del gioco, ogni giocatore sceglie una sequenza di tre colori che osserverà per tutto il resto della partita. Ad esempio, il Giocatore 1 potrebbe scegliere la sequenza R-N-N, mentre il Giocatore 2 potrebbe optare per R-R-N.
+Il gioco procede quindi così: si pescano le carte una alla volta dal mazzo. Ogni volta che compare una sequenza corrispondente a quella di un giocatore, quel giocatore segna un punto e le carte vengono scartate. Si continua fino all’esaurimento del mazzo.">
+<meta name="author" content="">
+<link rel="canonical" href="https://lafleur977.github.io/ArVento/posts/art3/">
+<link crossorigin="anonymous" href="/ArVento/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://lafleur977.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lafleur977.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lafleur977.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lafleur977.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lafleur977.github.io/ArVento/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://lafleur977.github.io/ArVento/posts/art3/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+</noscript><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+<meta name="theme-color" content="#0F2040">
+<meta name="msapplication-TileColor" content="#0F2040">
+
+<script data-goatcounter="https://lafleur.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script><meta property="og:url" content="https://lafleur977.github.io/ArVento/posts/art3/">
+  <meta property="og:site_name" content="ArVento">
+  <meta property="og:title" content="Penney&#39;s Game">
+  <meta property="og:description" content="Immaginate un gioco per due giocatori basato su un mazzo standard di 52 carte, in cui ci interessa esclusivamente il colore delle carte: rosso (R) o nero (N).
+All’inizio del gioco, ogni giocatore sceglie una sequenza di tre colori che osserverà per tutto il resto della partita. Ad esempio, il Giocatore 1 potrebbe scegliere la sequenza R-N-N, mentre il Giocatore 2 potrebbe optare per R-R-N.
+Il gioco procede quindi così: si pescano le carte una alla volta dal mazzo. Ogni volta che compare una sequenza corrispondente a quella di un giocatore, quel giocatore segna un punto e le carte vengono scartate. Si continua fino all’esaurimento del mazzo.">
+  <meta property="og:locale" content="it">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-24T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-24T00:00:00+00:00">
+    <meta property="article:tag" content="PenneysGame">
+    <meta property="article:tag" content="TeoriaDellaProbabilità">
+    <meta property="article:tag" content="CateneDiMarkov">
+    <meta property="article:tag" content="GiochiNonEqui">
+    <meta property="article:tag" content="SimulazioneMonteCarlo">
+    <meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Penney&#39;s Game">
+<meta name="twitter:description" content="Immaginate un gioco per due giocatori basato su un mazzo standard di 52 carte, in cui ci interessa esclusivamente il colore delle carte: rosso (R) o nero (N).
+All’inizio del gioco, ogni giocatore sceglie una sequenza di tre colori che osserverà per tutto il resto della partita. Ad esempio, il Giocatore 1 potrebbe scegliere la sequenza R-N-N, mentre il Giocatore 2 potrebbe optare per R-R-N.
+Il gioco procede quindi così: si pescano le carte una alla volta dal mazzo. Ogni volta che compare una sequenza corrispondente a quella di un giocatore, quel giocatore segna un punto e le carte vengono scartate. Si continua fino all’esaurimento del mazzo.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://lafleur977.github.io/ArVento/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Penney's Game",
+      "item": "https://lafleur977.github.io/ArVento/posts/art3/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Penney's Game",
+  "name": "Penney\u0027s Game",
+  "description": "Immaginate un gioco per due giocatori basato su un mazzo standard di 52 carte, in cui ci interessa esclusivamente il colore delle carte: rosso (R) o nero (N).\nAll’inizio del gioco, ogni giocatore sceglie una sequenza di tre colori che osserverà per tutto il resto della partita. Ad esempio, il Giocatore 1 potrebbe scegliere la sequenza R-N-N, mentre il Giocatore 2 potrebbe optare per R-R-N.\nIl gioco procede quindi così: si pescano le carte una alla volta dal mazzo. Ogni volta che compare una sequenza corrispondente a quella di un giocatore, quel giocatore segna un punto e le carte vengono scartate. Si continua fino all’esaurimento del mazzo.\n",
+  "keywords": [
+    "PenneysGame", "TeoriaDellaProbabilità", "CateneDiMarkov", "GiochiNonEqui", "SimulazioneMonteCarlo", "Python", "Divertimento"
+  ],
+  "articleBody": "Immaginate un gioco per due giocatori basato su un mazzo standard di 52 carte, in cui ci interessa esclusivamente il colore delle carte: rosso (R) o nero (N).\nAll’inizio del gioco, ogni giocatore sceglie una sequenza di tre colori che osserverà per tutto il resto della partita. Ad esempio, il Giocatore 1 potrebbe scegliere la sequenza R-N-N, mentre il Giocatore 2 potrebbe optare per R-R-N.\nIl gioco procede quindi così: si pescano le carte una alla volta dal mazzo. Ogni volta che compare una sequenza corrispondente a quella di un giocatore, quel giocatore segna un punto e le carte vengono scartate. Si continua fino all’esaurimento del mazzo.\nA prima vista, il gioco sembra equo, ma esiste una strategia vincente per il secondo giocatore. La regola è semplice:\nIl Giocatore 2 osserva la sequenza scelta dal Giocatore 1, ad esempio R-N-R.\nCompone la propria sequenza seguendo questo schema:\nIl primo colore sarà l’inverso del colore centrale della sequenza avversaria (qui, R).\nIl secondo colore sarà uguale al primo della sequenza avversaria (qui, R).\nIl terzo colore sarà uguale al secondo della sequenza avversaria (qui, N).\nApplicando questa strategia, il Giocatore 2 aumenta le proprie possibilità di vincere. La domanda naturale è:\nQual è la probabilità che il Giocatore 2 vinca applicando questa strategia rispetto al Giocatore 1?\nClicca qui per la soluzione Il gioco descritto è un esempio classico noto come Penney’s Game. Si tratta di un gioco apparentemente equo, ma che in realtà favorisce nettamente il secondo giocatore.\nPer i più curiosi: Il gioco può essere schematizzato come una catena di Markov assorbente non omogenea, in cui:\nGli stati rappresentano le sequenze parziali già osservate.\nGli stati assorbenti corrispondono al completamento di una sequenza vincente.\nEsiste anche una spiegazione grafica e intuitiva di questo risultato. Consideriamo, ad esempio, la scelta del giocatore 1 NNN e quella del giocatore 2 RNN, limitando l’analisi alle prime quattro estrazioni.\nOsservando l’immagine sottostante, si nota che il giocatore 1 ha una possibilità concreta di vittoria solo entro le prime 3 estrazioni, evento rappresentato dal collegamento in $\\color{green}{verde}$. Questo è l’unico percorso che può portare alla comparsa della sua sequenza prima di quella dell’avversario.\nIn tutti gli altri casi, l’evoluzione del gioco conduce rapidamente verso stati che favoriscono il giocatore 2, evidenziati dai collegamenti in $\\color{red}{rosso}$. La struttura delle transizioni rende quindi il suo vantaggio sistematico, e non il risultato di una coincidenza. Probabilità di vittoria per ciascuna combinazione di sequenze Scelta del 1° giocatore Scelta del 2° giocatore Probabilità vittoria 1° giocatore Probabilità vittoria 2° giocatore Probabilità pareggio NNN NNN 0,11% 99,49% 0,40% NNR RNN 2,62% 93,54% 3,84% NRN NNR 11,61% 80,11% 8,28% NRR NNR 5,18% 88,29% 6,53% RNN RRN 5,18% 88,29% 6,53% RNR RRN 11,61% 80,11% 8,28% RRN NRR 2,62% 93,54% 3,84% RRR NRR 0,11% 99,49% 0,40% Nota: N = nero, R = rosso\nEffettuando 1 milione di simulazioni dove il giocatore-1 seleziona casualmente ogni volta la sua combinazione e il giocatore-2 implementa la sua strategia si ottiene il seguente risultato:\nProbabilità vittoria 1° giocatore Media Punti 1° giocatore Probabilità vittoria 2° giocatore Media Punti 2° giocatore Probabilità pareggio 4,88% 2,23±1,56 90,38% 6,09±1,39 0,40% Per completezza, allego di seguito il codice Python impiegato per la simulazione Monte Carlo dei risultati, dove si sono utilizzati 0 e 1 invece di N e R.\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 import random from random import randint as rng import math simulazioni = 1_000_000 l_meta_mazzo = 26 #metà della lunghezza del mazzo player1_scores = [] player2_scores = [] for _ in range(simulazioni): player1 = [rng(0,1),rng(0,1),rng(0,1)] player2 = [0 if player1[1] == 1 else 1, player1[0], player1[1]] mazzo = [1] * l_meta_mazzo + [0] * l_meta_mazzo random.shuffle(mazzo) player1_points = 0 player2_points = 0 i = 0 while i \u003c= len(mazzo)-3: window = mazzo[i:i+3] if window == player1: player1_points += 1 i += 3 elif window == player2: player2_points += 1 i += 3 else: i += 1 player1_scores.append(player1_points) player2_scores.append(player2_points) # Calcolo percentuale di vittoria e media punti player1_wins = sum(1 for p1, p2 in zip(player1_scores, player2_scores) if p1 \u003e p2) player2_wins = sum(1 for p1, p2 in zip(player1_scores, player2_scores) if p2 \u003e p1) pareggi = simulazioni - player1_wins - player2_wins media_player1 = sum(player1_scores) / simulazioni media_player2 = sum(player2_scores) / simulazioni dev_std_player1 = math.sqrt(sum((x - media_player1) ** 2 for x in player1_scores) / simulazioni) dev_std_player2 = math.sqrt(sum((x - media_player2) ** 2 for x in player2_scores) / simulazioni) print(f\"Player1 vince: {player1_wins / simulazioni * 100:.2f}%\") print(f\"Player2 vince: {player2_wins / simulazioni * 100:.2f}%\") print(f\"Pareggi: {pareggi / simulazioni * 100:.2f}%\") print(f\"Media punti Player1: {media_player1:.2f}, Dev Std: {dev_std_player1:.2f}\") print(f\"Media punti Player2: {media_player2:.2f}, Dev Std: {dev_std_player2:.2f}\") print(f\"mazzo di {len(mazzo)} carte\") ",
+  "wordCount" : "813",
+  "inLanguage": "en",
+  "datePublished": "2026-01-24T00:00:00Z",
+  "dateModified": "2026-01-24T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lafleur977.github.io/ArVento/posts/art3/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ArVento",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lafleur977.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://lafleur977.github.io/ArVento/" accesskey="h" title="ArVento (Alt + H)">ArVento</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://lafleur977.github.io/ArVento/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lafleur977.github.io/ArVento/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lafleur977.github.io/ArVento/about/" title="Chi sono">
+                    <span>Chi sono</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://lafleur977.github.io/ArVento/">Home</a>&nbsp;»&nbsp;<a href="https://lafleur977.github.io/ArVento/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Penney&#39;s Game
+    </h1>
+    <div class="post-meta"><span title='2026-01-24 00:00:00 +0000 UTC'>January 24, 2026</span>&nbsp;·&nbsp;<span>4 min</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Immaginate un gioco per due giocatori basato su un mazzo standard di 52 carte, in cui ci interessa esclusivamente il <strong>colore</strong> delle carte: rosso (R) o nero (N).</p>
+<p>All’inizio del gioco, ogni giocatore sceglie una <strong>sequenza di tre colori</strong> che osserverà per tutto il resto della partita. Ad esempio, il <strong>Giocatore 1</strong> potrebbe scegliere la sequenza <strong>R-N-N</strong>, mentre il <strong>Giocatore 2</strong> potrebbe optare per <strong>R-R-N</strong>.</p>
+<p>Il gioco procede quindi così: si pescano le carte una alla volta dal mazzo. Ogni volta che compare una sequenza corrispondente a quella di un giocatore, quel giocatore segna un punto e le carte vengono scartate. Si continua fino all’esaurimento del mazzo.</p>
+<p>A prima vista, il gioco sembra equo, ma esiste una <strong>strategia vincente per il secondo giocatore</strong>. La regola è semplice:</p>
+<ul>
+<li>
+<p>Il Giocatore 2 osserva la sequenza scelta dal Giocatore 1, ad esempio <strong>R-N-R</strong>.</p>
+</li>
+<li>
+<p>Compone la propria sequenza seguendo questo schema:</p>
+<ol>
+<li>
+<p>Il primo colore sarà l’inverso del colore centrale della sequenza avversaria (qui, R).</p>
+</li>
+<li>
+<p>Il secondo colore sarà uguale al primo della sequenza avversaria (qui, R).</p>
+</li>
+<li>
+<p>Il terzo colore sarà uguale al secondo della sequenza avversaria (qui, N).</p>
+</li>
+</ol>
+</li>
+</ul>
+<p>Applicando questa strategia, il Giocatore 2 aumenta le proprie possibilità di vincere. La domanda naturale è:</p>
+<blockquote>
+<p><strong>Qual è la probabilità che il Giocatore 2 vinca applicando questa strategia rispetto al Giocatore 1?</strong></p>
+</blockquote>
+<details>
+<summary>Clicca qui per la soluzione</summary>
+<p>Il gioco descritto è un esempio classico noto come <a href="https://en.wikipedia.org/wiki/Penney's_game"><strong>Penney&rsquo;s Game</strong></a>. Si tratta di un gioco apparentemente equo, ma che in realtà favorisce nettamente il secondo giocatore.</p>
+<p>Per i più curiosi:
+Il gioco può essere schematizzato come una <strong><a href="https://it.wikipedia.org/wiki/Processo_markoviano">catena di Markov</a> assorbente non omogenea</strong>, in cui:</p>
+<ul>
+<li>
+<p>Gli <strong>stati</strong> rappresentano le sequenze parziali già osservate.</p>
+</li>
+<li>
+<p>Gli <strong>stati assorbenti</strong> corrispondono al completamento di una sequenza vincente.</p>
+</li>
+</ul>
+<p>Esiste anche una spiegazione <strong>grafica e intuitiva</strong> di questo risultato. Consideriamo, ad esempio, la scelta del <strong>giocatore 1</strong> NNN e quella del <strong>giocatore 2</strong> RNN, limitando l’analisi alle prime quattro estrazioni.</p>
+<p>Osservando l’immagine sottostante, si nota che il giocatore 1 ha una possibilità concreta di vittoria <strong>solo entro le prime 3 estrazioni</strong>, evento rappresentato dal collegamento in $\color{green}{verde}$.
+Questo è l’unico percorso che può portare alla comparsa della sua sequenza prima di quella dell’avversario.</p>
+<p>In tutti gli altri casi, l’evoluzione del gioco conduce rapidamente verso stati che favoriscono il <strong>giocatore 2</strong>, evidenziati dai collegamenti in $\color{red}{rosso}$. La struttura delle transizioni rende quindi il suo vantaggio sistematico, e non il risultato di una coincidenza.
+<img alt="Immagine Catena Estrazioni" loading="lazy" src="/ArVento/posts/art3/posts/Art3/Combinazioni.png"></p>
+<h3 id="probabilità-di-vittoria-per-ciascuna-combinazione-di-sequenze">Probabilità di vittoria per ciascuna combinazione di sequenze<a hidden class="anchor" aria-hidden="true" href="#probabilità-di-vittoria-per-ciascuna-combinazione-di-sequenze">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Scelta del 1° giocatore</th>
+          <th>Scelta del 2° giocatore</th>
+          <th>Probabilità vittoria 1° giocatore</th>
+          <th>Probabilità vittoria 2° giocatore</th>
+          <th>Probabilità pareggio</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>NNN</td>
+          <td>NNN</td>
+          <td>0,11%</td>
+          <td>99,49%</td>
+          <td>0,40%</td>
+      </tr>
+      <tr>
+          <td>NNR</td>
+          <td>RNN</td>
+          <td>2,62%</td>
+          <td>93,54%</td>
+          <td>3,84%</td>
+      </tr>
+      <tr>
+          <td>NRN</td>
+          <td>NNR</td>
+          <td>11,61%</td>
+          <td>80,11%</td>
+          <td>8,28%</td>
+      </tr>
+      <tr>
+          <td>NRR</td>
+          <td>NNR</td>
+          <td>5,18%</td>
+          <td>88,29%</td>
+          <td>6,53%</td>
+      </tr>
+      <tr>
+          <td>RNN</td>
+          <td>RRN</td>
+          <td>5,18%</td>
+          <td>88,29%</td>
+          <td>6,53%</td>
+      </tr>
+      <tr>
+          <td>RNR</td>
+          <td>RRN</td>
+          <td>11,61%</td>
+          <td>80,11%</td>
+          <td>8,28%</td>
+      </tr>
+      <tr>
+          <td>RRN</td>
+          <td>NRR</td>
+          <td>2,62%</td>
+          <td>93,54%</td>
+          <td>3,84%</td>
+      </tr>
+      <tr>
+          <td>RRR</td>
+          <td>NRR</td>
+          <td>0,11%</td>
+          <td>99,49%</td>
+          <td>0,40%</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>Nota: N = nero, R = rosso</p>
+</blockquote>
+<hr>
+<p>Effettuando 1 milione di simulazioni dove il giocatore-1 seleziona casualmente ogni volta la sua combinazione e il giocatore-2 implementa la sua strategia si ottiene il seguente risultato:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Probabilità vittoria 1° giocatore</th>
+          <th>Media Punti 1° giocatore</th>
+          <th>Probabilità vittoria 2° giocatore</th>
+          <th>Media Punti 2° giocatore</th>
+          <th>Probabilità pareggio</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>4,88%</td>
+          <td>2,23±1,56</td>
+          <td>90,38%</td>
+          <td>6,09±1,39</td>
+          <td>0,40%</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p>Per completezza, allego di seguito il codice Python impiegato per la simulazione Monte Carlo dei risultati, dove si sono utilizzati 0 e 1 invece di N e R.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span> <span class="k">as</span> <span class="n">rng</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">math</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">simulazioni</span> <span class="o">=</span> <span class="mi">1_000_000</span>   
+</span></span><span class="line"><span class="cl"><span class="n">l_meta_mazzo</span> <span class="o">=</span> <span class="mi">26</span>         <span class="c1">#metà della lunghezza del mazzo</span>
+</span></span><span class="line"><span class="cl"><span class="n">player1_scores</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="n">player2_scores</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">simulazioni</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">player1</span> <span class="o">=</span> <span class="p">[</span><span class="n">rng</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">rng</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">rng</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">player2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">if</span> <span class="n">player1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">1</span><span class="p">,</span> <span class="n">player1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">player1</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">mazzo</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">l_meta_mazzo</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">l_meta_mazzo</span>
+</span></span><span class="line"><span class="cl">    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">mazzo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">player1_points</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">player2_points</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mazzo</span><span class="p">)</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">window</span> <span class="o">=</span> <span class="n">mazzo</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">window</span> <span class="o">==</span> <span class="n">player1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">player1_points</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="n">i</span> <span class="o">+=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="n">window</span> <span class="o">==</span> <span class="n">player2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">player2_points</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="n">i</span> <span class="o">+=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">player1_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">player1_points</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">player2_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">player2_points</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Calcolo percentuale di vittoria e media punti</span>
+</span></span><span class="line"><span class="cl"><span class="n">player1_wins</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">player1_scores</span><span class="p">,</span> <span class="n">player2_scores</span><span class="p">)</span> <span class="k">if</span> <span class="n">p1</span> <span class="o">&gt;</span> <span class="n">p2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">player2_wins</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">player1_scores</span><span class="p">,</span> <span class="n">player2_scores</span><span class="p">)</span> <span class="k">if</span> <span class="n">p2</span> <span class="o">&gt;</span> <span class="n">p1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">pareggi</span> <span class="o">=</span> <span class="n">simulazioni</span> <span class="o">-</span> <span class="n">player1_wins</span> <span class="o">-</span> <span class="n">player2_wins</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">media_player1</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">player1_scores</span><span class="p">)</span> <span class="o">/</span> <span class="n">simulazioni</span>
+</span></span><span class="line"><span class="cl"><span class="n">media_player2</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">player2_scores</span><span class="p">)</span> <span class="o">/</span> <span class="n">simulazioni</span>
+</span></span><span class="line"><span class="cl"><span class="n">dev_std_player1</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">media_player1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">player1_scores</span><span class="p">)</span> <span class="o">/</span> <span class="n">simulazioni</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dev_std_player2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">media_player2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">player2_scores</span><span class="p">)</span> <span class="o">/</span> <span class="n">simulazioni</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Player1 vince: </span><span class="si">{</span><span class="n">player1_wins</span> <span class="o">/</span> <span class="n">simulazioni</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Player2 vince: </span><span class="si">{</span><span class="n">player2_wins</span> <span class="o">/</span> <span class="n">simulazioni</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Pareggi: </span><span class="si">{</span><span class="n">pareggi</span> <span class="o">/</span> <span class="n">simulazioni</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Media punti Player1: </span><span class="si">{</span><span class="n">media_player1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Dev Std: </span><span class="si">{</span><span class="n">dev_std_player1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Media punti Player2: </span><span class="si">{</span><span class="n">media_player2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Dev Std: </span><span class="si">{</span><span class="n">dev_std_player2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;mazzo di </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mazzo</span><span class="p">)</span><span class="si">}</span><span class="s2"> carte&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://lafleur977.github.io/ArVento/tags/penneysgame/">PenneysGame</a></li>
+      <li><a href="https://lafleur977.github.io/ArVento/tags/teoriadellaprobabilit%C3%A0/">TeoriaDellaProbabilità</a></li>
+      <li><a href="https://lafleur977.github.io/ArVento/tags/catenedimarkov/">CateneDiMarkov</a></li>
+      <li><a href="https://lafleur977.github.io/ArVento/tags/giochinonequi/">GiochiNonEqui</a></li>
+      <li><a href="https://lafleur977.github.io/ArVento/tags/simulazionemontecarlo/">SimulazioneMonteCarlo</a></li>
+      <li><a href="https://lafleur977.github.io/ArVento/tags/python/">Python</a></li>
+      <li><a href="https://lafleur977.github.io/ArVento/tags/divertimento/">Divertimento</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://lafleur977.github.io/ArVento/posts/art1/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Il Problema degli esagoni</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://lafleur977.github.io/ArVento/">ArVento</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

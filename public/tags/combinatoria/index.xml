@@ -14,7 +14,9 @@
       <pubDate>Mon, 19 Jan 2026 00:00:00 +0000</pubDate>
       <guid>https://lafleur977.github.io/ArVento/posts/art1/</guid>
       <description>&lt;p&gt;Tempo fa un amico mi ha proposto un problema di logica matematica davvero intrigante, e da allora non ho smesso di pensarci.&lt;/p&gt;
+&lt;blockquote&gt;
 &lt;p&gt;Immaginate un esagono composto da celle esagonali più piccole, il cui lato misura &lt;strong&gt;5 celle&lt;/strong&gt; (come mostrato in figura).&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;img alt=&#34;Immagine Griglia Esagonale non trovata&#34; loading=&#34;lazy&#34; src=&#34;https://lafleur977.github.io/ArVento/posts/art1/posts/Art1/griglia_esagoni.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Tutte le celle inizialmente sono spente e la regola per accenderle è semplice:&lt;/p&gt;
 &lt;blockquote&gt;

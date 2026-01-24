@@ -10,9 +10,9 @@
     <atom:link href="https://lafleur977.github.io/ArVento/tags/matematicacomputazionale/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lo scandalo di RANDU</title>
-      <link>https://lafleur977.github.io/ArVento/posts/art1-2/</link>
+      <link>https://lafleur977.github.io/ArVento/posts/art2/</link>
       <pubDate>Mon, 19 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://lafleur977.github.io/ArVento/posts/art1-2/</guid>
+      <guid>https://lafleur977.github.io/ArVento/posts/art2/</guid>
       <description>&lt;p&gt;Negli anni ’60, nei laboratori di calcolo scientifico, un piccolo dettaglio algoritmico avrebbe cambiato il modo in cui gli studiosi guardano ai numeri casuali. Quel dettaglio si chiamava &lt;strong&gt;RANDU&lt;/strong&gt;, uno dei generatori di numeri pseudocasuali più diffusi… e più problematici della storia.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;che-cosè-randu&#34;&gt;Che cos’è RANDU?&lt;/h2&gt;

@@ -31,20 +31,28 @@ Nel caso specifico di RANDU, i parametri erano:
 
 Questo algoritmo era incorporato nei computer IBM e utilizzato in simulazioni [Monte Carlo](https://it.wikipedia.org/wiki/Metodo_Monte_Carlo) in fisica, ingegneria e statistica. Appariva efficiente e “casuale” a prima vista, tanto da guadagnarsi la fiducia di intere generazioni di scienziati.
 
+Ma arriviamo alla ragione dello scandalo, i numeri che generava avevano davvero un comportamento pseudo-casuale?
+
 Effettivamente se proviamo a generare un milione di numeri e facciamo l'istogramma, appare una distribuzione uniforme....
 
-![Distribuzione Numeri RANDU](Istogramma.png)
+![Distribuzione Numeri RANDU](posts/Art2/Istogramma.png)
 
-Ora proviamo a graficare i numeri generati da RANDU separandoli in **triple successive di numeri generati**, cioè le sequenze $(X_n,X_{n+1},X_{n+2})$. 
+Proviamo a graficare in **3D** i numeri generati da RANDU associandoli a triplette di punti cartesiani come in figura:
 
-![Grafico 3D OK](3D_ok.png)
+![Immagine Sequenze Xn-Xn1-Xn2](SequenzeVarie.png)
 
-Ancora, la distribuzione in 3 dimensioni appare anch'essa uniforme.....
-Invece se proviamo a ruotare leggermente ci si accorge che
+Anche se proviamo a graficare i numeri generati da RANDU separandoli in **triple successive di numeri generati**, prendendo: $(X_n,X_{n+1},X_{n+2})$ come $(x,y,z)$ il comportamento potrebbe comunque apparire corretto...
 
-![Distribuzione 3D RANDU in fogli](3D_azz.png)
+Infatti sembrerebbe ancora essere frutto di una distribuzione uniforme...
 
->In uno spazio tridimensionale, i punti non si distribuiscono uniformemente come ci si aspetterebbe da una sequenza casuale, ma cadono su **un numero limitato di piani distinti**.
+![Grafico 3D OK](posts/Art2/3D_ok.png)
+
+
+Ma attenzione... Ruotando leggermente l'immagine ci viene rivelato il problema: 
+
+![Distribuzione 3D RANDU in fogli](posts/Art2/3D_azz.png)
+
+>In uno spazio tridimensionale, i punti non si distribuiscono uniformemente come ci si aspetterebbe da una sequenza casuale, ma cadono su **15 piani distinti**.
 
 Questo fenomeno è dovuto a una scelta inadeguata dei parametri: la sequenza sembra casuale guardata singolarmente, ma le correlazioni tra numeri consecutivi introducono pattern regolari.
 
